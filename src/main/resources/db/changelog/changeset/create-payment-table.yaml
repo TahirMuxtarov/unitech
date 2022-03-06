@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: tahir
+      description: "For create payment table"
+      changes:
+        - createTable:
+            tableName: payments
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: paymentPK
+                    nullable: false
+              - column:
+                  name: create_date
+                  type: datetime
+              - column:
+                  name: dp_acc
+                  type: VARCHAR(255)
+              - column:
+                  name: cr_acc
+                  type: VARCHAR(255)
+              - column:
+                  name: amount
+                  type: DECIMAL
+              - column:
+                  name: payment_id
+                  type: VARCHAR(255)

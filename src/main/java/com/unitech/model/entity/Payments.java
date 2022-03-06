@@ -24,7 +24,7 @@ public class Payments {
 
     private Date date;
 
-    @Column(name = "dr_acc")
+    @Column(name = "dp_acc")
     private String debitAccountNo;
 
     @Column(name = "cr_acc")

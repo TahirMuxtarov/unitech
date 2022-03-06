@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: tahir
+      description: "For create account table"
+      changes:
+        - createTable:
+            tableName: accounts
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: accountPK
+                    nullable: false
+              - column:
+                  name: account_no
+                  type: VARCHAR(255)
+              - column:
+                  name: pan
+                  type: VARCHAR(255)
+              - column:
+                  name: amount
+                  type: DECIMAL
+              - column:
+                  name: status
+                  type: VARCHAR(255)
+              - column:
+                  name: user_id
+                  constraints:
+                    foreignKeyName: user_if_fk
+                    referencedTableName: users
+                    referencedColumnNames: id
+                  type: BIGINT

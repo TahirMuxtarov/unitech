@@ -32,6 +32,10 @@ dependencies {
     //jwt
     implementation "io.jsonwebtoken:jjwt:${jwt_version}"
 
+    //liquibase
+    implementation 'org.liquibase:liquibase-core'
+
+
     //feign
     implementation group: 'io.github.openfeign', name: 'feign-jackson', version: '10.8'
     implementation group: 'io.github.openfeign', name: 'feign-annotation-error-decoder', version: '1.3.0'
@@ -53,6 +57,7 @@ dependencies {
 
     //postgresql
     runtimeOnly 'org.postgresql:postgresql'
+
     //Lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
