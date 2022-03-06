@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+feign:
+  client:
+    config:
+      fast-forest:
+        connectTimeout: 10000
+        readTimeout: 10000
+
+application:
+  service:
+    fast-forest:
+      url: https://api.fastforex.io
+      api-key: 168f504c48-843b8b3318-r89thg
