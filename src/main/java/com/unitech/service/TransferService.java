@@ -4,6 +4,7 @@ import com.unitech.client.model.response.OneRate;
 import com.unitech.client.model.response.Results;
 import com.unitech.error.CommonException;
 import com.unitech.mapper.TransferMapper;
+import com.unitech.model.AccountStatus;
 import com.unitech.model.dto.TransferRequestDto;
 import com.unitech.model.entity.Accounts;
 import com.unitech.model.entity.Payments;
@@ -37,16 +38,27 @@ public class TransferService {
         }
         Accounts creditAccount = accountService.getProperAccount(transferRequestDto.getCreditAccountNo());
 
+
         UserAccountsResponse myAccounts = accountService.getAccounts(transferRequestDto.getPin());
         Accounts debitAccount = myAccounts.getAccounts().stream()
                 .filter(account -> account.getAccountNo().equals(transferRequestDto.getDebitAccountNo()))
                 .findFirst()
                 .orElseThrow(() -> new CommonException(ErrorMessage.ACCOUNT_NOT_FOUND));
 
+        if(creditAccount.getAccountStatus().equals(AccountStatus.ACTIVE)&&debitAccount
+                .getAccountStatus().equals(AccountStatus.ACTIVE)){
+            System.out.println("both account active");
+        }else{
+            throw new CommonException(ErrorMessage.ACCOUNT_NOT_ACTIVE);
+        }
+
         if (debitAccount.getAmount().compareTo(transferRequestDto.getAmount()) < 0) {
             throw new CommonException(ErrorMessage.INSUFFICIENT_BALANCE);
         }
+
+
         debitAccount.setAmount(debitAccount.getAmount().subtract(request.getAmount()));
+
         creditAccount.setAmount(creditAccount.getAmount().add(request.getAmount()));
 
         Payments payment = Payments.builder()

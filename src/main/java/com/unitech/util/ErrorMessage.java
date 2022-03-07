@@ -14,7 +14,8 @@ public enum ErrorMessage {
     USER_ALREADY_EXIST("User already exist"),
     USER_NOT_FOUND("User not found"),
     INVALID_CREDENTIALS("Invalid pin or password"),
-    INVALID_PASSWORD("Invalid password");
+    INVALID_PASSWORD("Invalid password"),
+    ACCOUNT_NOT_ACTIVE("Account is not active");
     private String message;
 
 }

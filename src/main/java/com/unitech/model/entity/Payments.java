@@ -21,7 +21,7 @@ public class Payments {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(name="create_date")
     private Date date;
 
     @Column(name = "dp_acc")

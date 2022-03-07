@@ -19,9 +19,6 @@ databaseChangeLog:
                   name: account_no
                   type: VARCHAR(255)
               - column:
-                  name: pan
-                  type: VARCHAR(255)
-              - column:
                   name: amount
                   type: DECIMAL
               - column:

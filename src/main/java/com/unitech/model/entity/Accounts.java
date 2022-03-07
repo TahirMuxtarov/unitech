@@ -28,7 +28,7 @@ public class Accounts {
     @Column(name = "account_no")
     private String accountNo;
 
-    private String pan;
+    //private String pan;
 
     private BigDecimal amount;
 

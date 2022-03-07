@@ -17,7 +17,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: create_date
-                  type: datetime
+                  type: DATE
               - column:
                   name: dp_acc
                   type: VARCHAR(255)
