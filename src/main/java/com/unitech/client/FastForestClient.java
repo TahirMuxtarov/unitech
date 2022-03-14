@@ -3,6 +3,7 @@ package com.unitech.client;
 import com.unitech.client.config.FastForestConfiguration;
 import com.unitech.client.error.FastForestException;
 import com.unitech.client.model.response.AllRates;
+import com.unitech.client.model.response.MultiRate;
 import com.unitech.client.model.response.OneRate;
 import feign.error.ErrorHandling;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -23,5 +24,10 @@ public interface FastForestClient {
     OneRate getOneRate(@RequestParam String from,
                        @RequestParam String to,
                        @RequestParam String api_key);
+    @GetMapping("/fetch-multi")
+    @ErrorHandling(defaultException = FastForestException.class)
+    MultiRate getMultiRate(@RequestParam String from,
+                           @RequestParam String [] to,
+                           @RequestParam String api_key);
 
 }

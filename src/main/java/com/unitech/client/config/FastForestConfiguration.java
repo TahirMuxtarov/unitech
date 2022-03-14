@@ -13,7 +13,8 @@ public class FastForestConfiguration {
 
 
     @Bean
-    public ErrorDecoder zeusErrorDecoder() {
+    public ErrorDecoder errorDecoder() {
+
         return AnnotationErrorDecoder.builderFor(FastForestClient.class)
                 .withResponseBodyDecoder(new JacksonDecoder())
                 .build();

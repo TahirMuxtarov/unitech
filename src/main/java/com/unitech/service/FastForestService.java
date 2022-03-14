@@ -1,6 +1,7 @@
 package com.unitech.service;
 
 import com.unitech.client.model.response.AllRates;
+import com.unitech.client.model.response.MultiRate;
 import com.unitech.client.model.response.OneRate;
 import com.unitech.repository.FastForestRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,5 +19,9 @@ public class FastForestService {
 
     public OneRate getOneRate(String baseCurr, String valCurr) {
        return fastForestRepository.getOneRate(baseCurr, valCurr);
+    }
+
+    public MultiRate getMultiRate(String from, String[] to) {
+        return fastForestRepository.getMultiRate(from,to);
     }
 }

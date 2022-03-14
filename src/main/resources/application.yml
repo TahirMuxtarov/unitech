@@ -23,7 +23,8 @@ application:
   service:
     fast-forest:
       url: https://api.fastforex.io
-      api-key: e5e49eba82-15b8e6a620-r8cis6
-      #168f504c48-843b8b3318-r89thg
+      api-key: d2ee027e4d-691d4f39d3-r8qb2j
+
+
 
 

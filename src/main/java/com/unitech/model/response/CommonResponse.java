@@ -8,8 +8,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class CommonResponse {
+
+    public CommonResponse(){
+
+    }
+
 
     private String code;
     private String message;

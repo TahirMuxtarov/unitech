@@ -2,6 +2,7 @@ package com.unitech.repository;
 
 import com.unitech.client.FastForestClient;
 import com.unitech.client.model.response.AllRates;
+import com.unitech.client.model.response.MultiRate;
 import com.unitech.client.model.response.OneRate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,5 +23,8 @@ public class FastForestRepository {
 
     public OneRate getOneRate(String baseCurrency, String value) {
         return client.getOneRate(baseCurrency, value, apiKey);
+    }
+    public MultiRate getMultiRate(String from, String [] to){
+        return client.getMultiRate(from,to,apiKey);
     }
 }

@@ -18,7 +18,9 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) {
+        System.err.println("username");
         User user = authRepository.findByPin(username)
+
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         return new org.springframework.security.core.userdetails.User(user.getPin(), user.getPassword(), new ArrayList<>());
     }

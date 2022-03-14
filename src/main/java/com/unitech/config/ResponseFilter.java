@@ -50,6 +50,7 @@ public class ResponseFilter implements ResponseBodyAdvice<CommonResponse> {
                                             ServerHttpRequest request, ServerHttpResponse response) {
 
         if (body.getMessage() == null) {
+            System.err.println("inside response filter before body write");
             body.setCode("200");
             body.setMessage("Success");
         }

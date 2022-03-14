@@ -55,5 +55,8 @@ public class Results {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "XDR")
     private String xdr;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty(value = "TRY")
+    private String tl;
 
 }

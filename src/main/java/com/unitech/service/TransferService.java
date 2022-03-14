@@ -8,11 +8,13 @@ import com.unitech.model.AccountStatus;
 import com.unitech.model.dto.TransferRequestDto;
 import com.unitech.model.entity.Accounts;
 import com.unitech.model.entity.Payments;
+import com.unitech.model.entity.User;
 import com.unitech.model.request.TransferRequest;
 import com.unitech.model.response.CommonResponse;
 import com.unitech.model.response.TransferResponse;
 import com.unitech.model.response.UserAccountsResponse;
 import com.unitech.repository.PaymentsRepository;
+import com.unitech.repository.UserRepository;
 import com.unitech.util.ErrorMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +31,7 @@ public class TransferService {
     private final AccountService accountService;
     private final PaymentsRepository paymentsRepository;
     private final TransferMapper transferMapper;
+    private final UserRepository userRepository;
 
     @Transactional
     public TransferResponse transferToAccount(TransferRequest request) {
@@ -38,12 +41,16 @@ public class TransferService {
         }
         Accounts creditAccount = accountService.getProperAccount(transferRequestDto.getCreditAccountNo());
 
+        User user = userRepository.findByPin(transferRequestDto.getPin());
 
         UserAccountsResponse myAccounts = accountService.getAccounts(transferRequestDto.getPin());
         Accounts debitAccount = myAccounts.getAccounts().stream()
                 .filter(account -> account.getAccountNo().equals(transferRequestDto.getDebitAccountNo()))
                 .findFirst()
                 .orElseThrow(() -> new CommonException(ErrorMessage.ACCOUNT_NOT_FOUND));
+
+
+
 
         if(creditAccount.getAccountStatus().equals(AccountStatus.ACTIVE)&&debitAccount
                 .getAccountStatus().equals(AccountStatus.ACTIVE)){

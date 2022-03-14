@@ -1,6 +1,7 @@
 package com.unitech.controller;
 
 import com.unitech.client.model.response.AllRates;
+import com.unitech.client.model.response.MultiRate;
 import com.unitech.client.model.response.OneRate;
 import com.unitech.service.FastForestService;
 import lombok.RequiredArgsConstructor;
@@ -25,5 +26,10 @@ public class RateController {
     public OneRate getOneRate(@RequestParam String from,
                               @RequestParam String to) {
         return fastForestService.getOneRate(from, to);
+    }
+    @GetMapping("/multi")
+    public MultiRate getMultiRate(@RequestParam String from,
+                                  @RequestParam String... to) {
+        return fastForestService.getMultiRate(from, to);
     }
 }

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
+
 public enum ErrorMessage {
 
     NOT_FOUND( "Not found"),
@@ -18,4 +18,7 @@ public enum ErrorMessage {
     ACCOUNT_NOT_ACTIVE("Account is not active");
     private String message;
 
+    ErrorMessage(String message) {
+        this.message = message;
+    }
 }
